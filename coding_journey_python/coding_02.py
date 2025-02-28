@@ -21,6 +21,8 @@ def coletar_nome(mensagem=str) -> str:
             nome_usuario = input(mensagem).title()
             if isalpha_with_spaces(nome_usuario) == False:
                 raise ValueError("Nome inválido. Use apenas letras e espaços.")
+            elif len(nome_usuario) == 0:
+                raise ValueError("Nome inválido. Digite seu nome.")
         except ValueError as e:
             print(e)
             tentativas += 1
