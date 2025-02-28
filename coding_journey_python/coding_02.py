@@ -33,29 +33,44 @@ def coletar_nome(mensagem=str) -> str:
             return nome_usuario
 
 
-def coletar_salario(valor_salario=float) -> float:
-    try:
-        valor_salario = float(input('Digite o valor do seu salário: '))
-        if valor_salario <= 0:
-            raise ValueError
-        elif valor_salario.is_integer() == False:
-            raise ValueError
-    except ValueError:
-        print('Digite um valor válido')
-    else:
-        return valor_salario
+def coletar_salario(mensagem=str) -> float:
+    tentativas = 0
+    while tentativas < 3:
+        try:
+            valor_salario = int(input('Digite o valor do seu salário: '))
+            if valor_salario <= 0 or valor_salario.is_integer() == False:
+                raise ValueError("Digite um valor  inteiro e maior que zero.")
+        except ValueError as e:
+            print(e)
+            tentativas += 1
+            if tentativas == 3:
+                print("Número de tentativas excedido. Tente novamente mais tarde.")
+                exit()
+            else:
+                print(f'Tentativas restantes: {3 - tentativas}')
+        else:
+            return valor_salario
 
 
-def coletar_bonus(valor_bonus=float) -> float:
-    valor_maximo_bonus = 10
-    try:
-        valor_bonus = float(input('Digite o valor do seu bônus: '))
-        if valor_bonus <= 0 or valor_bonus > valor_maximo_bonus:
-            raise ValueError
-    except ValueError:
-        print('Digite um valor válido')
-    else:
-        return valor_bonus
+def coletar_bonus(mensagem=str) -> float:
+    tentativas = 0
+    valor_maximo_bonus = 5.0
+    valor_minimo_bonus = 0.0
+    while tentativas < 3:
+        try:
+            valor_bonus = float(input('Digite o valor do seu bônus: '))
+            if valor_bonus < valor_minimo_bonus or valor_bonus > valor_maximo_bonus:
+                raise ValueError('Digite um valor entre 0 e 5.')
+        except ValueError as e:
+            print(e)
+            tentativas += 1
+            if tentativas == 3:
+                print('Numero de tentativas excedido. Tente novamente mais tarde.')
+                exit()
+            else:
+                print(f'Tentativas restantes: {3 - tentativas}')
+        else:
+            return valor_bonus
 
 
 def calcular_valor_kpi(valor_salario=float, valor_bonus=float, valor_variavel=10) -> float:
