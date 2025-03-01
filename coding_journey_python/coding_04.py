@@ -40,12 +40,42 @@ print('"Dados inválidos:"', dados_invalidos)
 # Imagine que você está trabalhando com dados de sensores IoT.
 # Os dados incluem medições de temperatura. Você precisa classificar cada leitura
 # como 'Baixa', 'Normal' ou 'Alta'. Considerando que:
+# Temperatura < 18°C é 'Baixa'
+# Temperatura >= 18°C e <= 26°C é 'Normal'
+# Temperatura > 26°C é 'Alta'
+
+
+def gerar_dados_temperatura(num_registros):
+    dados_temperatura = []
+
+    for n in range(num_registros):
+        temperatura = random.randint(0, 50)  # temperatura aleatória
+        if temperatura < 18:
+            dados_temperatura.append(
+                {'classificacao': 'Baixa', 'temperatura': temperatura})
+        elif temperatura >= 18 and temperatura <= 26:
+            dados_temperatura.append(
+                {'classificacao': 'Normal', 'temperatura': temperatura})
+        elif temperatura > 26:
+            dados_temperatura.append(
+                {'classificacao': 'Alta', 'temperatura': temperatura})
+    return dados_temperatura
+
+# Gerar dados de temperatura
+
+
+num_registros = 10
+dados_temperatura = gerar_dados_temperatura(num_registros)
+print(dados_temperatura)
+
 
 # Exercício 3: Filtragem de Logs por Severidade
 # Você está analisando logs de uma aplicação e precisa filtrar mensagens
 # com severidade 'ERROR'. Dado um registro de log em formato de dicionário
 # como `log = {'timestamp': '2021-06-23 10:00:00', 'level': 'ERROR', 'message': 'Falha na conexão'}`,
 # escreva um programa que imprima a mensagem se a severidade for 'ERROR'.
+
+
 
 
 # Exercício 4: Validação de Dados de Entrada
