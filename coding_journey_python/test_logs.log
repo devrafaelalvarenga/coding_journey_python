@@ -1,0 +1,10 @@
+2025-03-10 20:30:36,989 - CRITICAL - Erro de rede: conexão perdida
+2025-03-10 20:30:37,360 - DEBUG - Divisão por zero detectada
+2025-03-10 20:30:38,332 - INFO - Erro de permissão ao acessar o arquivo
+2025-03-10 20:30:38,872 - INFO - Erro de rede: conexão perdida
+2025-03-10 20:30:39,673 - INFO - Erro de rede: conexão perdida
+2025-03-10 20:30:40,037 - INFO - Erro de validação dos dados de entrada
+2025-03-10 20:30:40,452 - CRITICAL - Falha na leitura do sensor
+2025-03-10 20:30:41,409 - DEBUG - Tempo limite excedido na requisição
+2025-03-10 20:30:42,066 - INFO - Falha na leitura do sensor
+2025-03-10 20:30:42,960 - INFO - Memória insuficiente para alocação
