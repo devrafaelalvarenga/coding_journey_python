@@ -4,8 +4,10 @@
 # Escreva um programa que verifique esses campos e imprima "Dados válidos" se ambos
 # forem positivos ou "Dados inválidos" caso contrário.
 
-import time
+
+import re
 import logging
+import time
 import random
 
 
@@ -146,6 +148,56 @@ if __name__ == "__main__":
 # você precisa garantir que cada usuário tenha idade entre 18 e 65 anos e tenha
 # fornecido um email válido. Escreva um programa que valide essas condições
 # e imprima "Dados de usuário válidos" ou o erro específico encontrado.
+
+
+def is_alpha_space(str) -> str:
+    return all(char.isalpha() or char.isspace() for char in str)
+
+
+def is_digit_space(str) -> str:
+    return (str.isnumeric() or str.isspace())
+
+
+def valida_nome(msg) -> str:
+    while True:
+        nome = input(msg)
+        if not (is_alpha_space(nome) and len(nome) >= 4):
+            print("OPS! Valores inválidos ou nome curto demais.")
+        else:
+            return nome
+
+
+def valida_idade(msg):
+    idade_minima = 18
+    idade_maxima = 65
+    while True:
+        idade = input(msg)
+        if not (is_digit_space(idade)):
+            print("OPS! Valores inválidos.")
+        elif int(idade) < 18 or int(idade) > 65:
+            print("OPS! Idade fora do limite.")
+        else:
+            return idade
+
+
+def valida_email(msg):
+    while True:
+        email = input(msg)
+        r = re.compile(r'^[\w.-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$')
+        if not r.match(email):
+            print("OPS! Email inválido. Tente novamente.")
+        else:
+            return email
+
+
+if __name__ == "__main__":
+
+    nome_usuario = valida_nome('Digite o seu nome: ').title()
+    idade_usuario = valida_idade("Digite a sua idade: ")
+    email_usuario = valida_email("Digite o seu email: ")
+    print(
+        f'Dados de usuário válidos: \n Nome: {nome_usuario} \n Idade: {idade_usuario} \n Email: {email_usuario}')
+
 
 # Exercício 5: Detecção de Anomalias em Dados de Transações
 # Você está trabalhando em um sistema de detecção de fraude e precisa identificar
