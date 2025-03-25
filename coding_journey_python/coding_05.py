@@ -1,4 +1,46 @@
-# 3. Informações de um livro
+# type hints
+
+import json
+nome = 'Lucas'  # sem type hint
+nome: str = 'Lucas'  # type hint
+
+
+# listas e dicionários
+lista: list = []
+lista: list = [1, 2, 3, 'eu', 'você', 4.5, 5.5]
+
+dicionario: dict = {}
+dicionario1: dict[str, int] = {
+    'nome': 'Yasmin', 'idade': 15, 'cidade': 'Campinas'}
+dicionario2: dict = {'nome': 'Dalva', 'idade': 25, 'cidade': 'São Paulo'}
+dicionario3: dict = {'nome': 'Bruna', 'idade': 30, 'cidade': 'Rio de Janeiro'}
+
+lista_dicionarios: list = []
+lista_dicionarios.append(dicionario1)
+lista_dicionarios.append(dicionario2)
+lista_dicionarios.append(dicionario3)
+
+# json
+lista_dicionarios_json: str = json.dumps(lista_dicionarios, indent=4)
+print(lista_dicionarios_json)
+
+
+# Exercício 1: lista de numeros ao quadrado
+
+lista: list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+quadrados = [x ** 2 for x in lista]
+print(quadrados)
+
+# Exercício 2: Modificar lista de linguagens
+
+linguagens = ['Python', 'Java', 'C#', 'JavaScript', 'PHP']
+linguagens = [x.lower() for x in linguagens]
+linguagens.pop(2)
+linguagens.append('C++')
+linguagens.append('Ruby')
+print(linguagens)
+
+# Exercício 3: Informações de um livro
 
 from typing import Union
 
